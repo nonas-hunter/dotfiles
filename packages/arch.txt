@@ -1,0 +1,14 @@
+hyprland
+vim
+pipewire
+pipewire-audio
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+alsa-utils
+bluez
+bluez-utils
+blueman
+openssh
+brightnessctl
