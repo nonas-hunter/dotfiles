@@ -1,0 +1,22 @@
+@use "colors";
+
+* {
+ all: unset;
+}
+
+.bar {
+  background-color: colors.$base00;
+}
+
+.icon {
+  font-family: Linearicons-Free;
+}
+
+.mem_bar {
+	highlight {
+		background-color: colors.$base01;
+	}
+	trough {
+		background-color: colors.$base02;
+	}
+}
