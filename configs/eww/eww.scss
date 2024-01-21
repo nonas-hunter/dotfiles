@@ -6,17 +6,70 @@
 
 .bar {
   background-color: colors.$base00;
+  padding: .3rem;
+  border-radius: 5px;
+  font-size: 1em;
+  margin: 5px 5px 5px 5px;
+}
+
+.box {
+  padding: 12px 8px 12px 8px;
 }
 
 .icon {
-  font-family: Linearicons-Free;
+  font-family: "Fira Code";
 }
 
-.mem_bar {
-	highlight {
-		background-color: colors.$base01;
-	}
-	trough {
-		background-color: colors.$base02;
-	}
+.time {
+  color: colors.$base05;
+  font-size: 0.75em;
+  font-family: "Orbitron";
 }
+
+.power {
+  color: colors.$base08;
+}
+
+.brightness {
+  color: colors.$base0a;
+}
+
+.volume {
+  color: colors.$base0d;
+}
+
+.workspace {
+  font-family: "Font Awesome 6 Free";
+  font-size: 0.8em;
+}
+
+revealer {
+  padding-bottom: 6px;
+}
+
+scale trough {
+  background-color: colors.$base01;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+  margin: .3rem 0 .3rem 0;
+  font-family: "Fira Code";
+}
+
+.volume-bar trough highlight {
+  background-color: colors.$base0d;
+  border-radius: 5px;
+}
+
+.brightness-bar trough highlight {
+  background-color: colors.$base0a;
+  border-radius: 5px;
+}
+
+tooltip {
+     border-radius: 4px;
+     background-color: colors.$base01;
+     color: colors.$base06;
+     font-size: 0.8em;
+}
+

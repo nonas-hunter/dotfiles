@@ -20,8 +20,8 @@ def process_monitors(raw_input):
 
 def process_workspaces(raw_input):
     icons = {
-       "Firefox": "",
-       "luke@jarvis:": "",
+       ".*Firefox.*": "",
+       ".*@.*:.*": "",
     }
     
     output = {}
@@ -30,17 +30,17 @@ def process_workspaces(raw_input):
     for line in lines:
         if "workspace ID" in line:
             workspace_id = int(re.search(r"[0-9]", line).group(0))
-            output[workspace_id] = ""
+            output[workspace_id] = ""
         if "lastwindowtitle" in line:
             for key in icons.keys():
-                if key in line:
+                if re.match(key, line):
                     output[workspace_id] = icons[key]
     return output
 
 
 
 def convert_to_color(num):
-    value = (int(num) % 8) + 8
+    value = (int(num) % 8) + 11
     return f"colors.$base{value:02x}"
 
 

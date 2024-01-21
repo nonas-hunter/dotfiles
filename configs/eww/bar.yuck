@@ -1,0 +1,165 @@
+(defwindow bar
+           :monitor 0
+           :geometry (geometry :x "15px"
+                               :y "0px"
+                               :width "10px"
+                               :height "80%"
+                               :anchor "center left")
+           :stacking "fg"
+           :exclusive "true"
+    (bar))
+
+(defwidget bar []
+    (box :orientation "vertical"
+         :vexpand "false"
+         :hexpand "false"
+      (box :orientation "vertical"
+           :space-evenly "false"
+           :valign "start"
+           :spacing 8
+           :class "box"
+        (workspace :workspace-id 1)
+        (workspace :workspace-id 2)
+        (workspace :workspace-id 3)
+        (workspace :workspace-id 4)
+        (workspace :workspace-id 5))
+      (box :orientation "vertical"
+           :space-evenly "false"
+           :valign "end"
+           :class "box"
+           :spacing 8
+        (battery)
+        (brightness)
+        (volume)
+        (clock)
+        (power))))
+
+(defwidget workspace [workspace-id]
+  (box :orientation "vertical"
+       :vexpand "false"
+       :class "workspace"
+       :hexpand "false"
+       :space-evenly "false"
+       :valign "start"
+    (label :class "workspace-${workspace-id}"
+           :justify "center"
+           :xalign 0.5
+           :css "@use 'colors'; .workspace-${workspace-id} {color: ${substring(list-workspaces, (workspace-id - 1) * 15, 14)};}"
+           :text {substring(list-workspaces, ((workspace-id - 1) * 15) + 14, 1)})))
+
+(defpoll list-workspaces :interval "2s"
+                         :initial ""
+  `scripts/workspaces.py`)
+
+(defwidget clock []
+  (box :orientation "vertical"
+       :space-evenly false
+       :class "time"
+       :valign "end"
+       :tooltip {formattime(EWW_TIME, "%B %d, %Y (%D)")}
+       :css "@use 'colors'; .time {color: colors.$strings;}"
+    {formattime(EWW_TIME, "%I")}
+    {formattime(EWW_TIME, "%M")}
+    {formattime(EWW_TIME, "%p")}))
+
+(defwidget volume []
+  (eventbox :onhover "${EWW_CMD} update show-volume=true"
+            :onhoverlost "${EWW_CMD} update show-volume=false"
+    (box :orientation "vertical"
+         :space-evenly "false"
+         :valign "end"
+         :class "volume"
+      (revealer :transition "slideup"
+                :duration "500ms"
+                :reveal show-volume
+        (scale :class "volume-bar"
+               :orientation "vertical"
+               :flipped true
+               :min 0
+               :max 101
+               :value percent-volume
+               :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"))
+      (label :class "icon"
+             :justify "center"
+             :xalgin 0.5
+             :text {mute-volume =~ "MUTE" ? "" : percent-volume < 50 ? percent-volume == 0 ? "" : "" : "" }))))
+
+(defpoll percent-volume :initial "0"
+                        :interval "2s"
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -r -e 's/[^0-9]//g' -e 's/^0?0//g'`)
+(defpoll mute-volume :initial ""
+                       :interval "2s"
+  `wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed -e 's/[^MUTE]//g'`)
+(defvar show-volume false)
+
+(defwidget battery []
+  (eventbox :onhover "${EWW_CMD} update show-battery=true"
+            :onhoverlost "${EWW_CMD} update show-battery=false"
+    (box :orientation "vertical"
+         :space-evenly "false"
+         :valign "end"
+      (label :class "battery"
+             :justify "center"
+             :tooltip {"Battery: " + EWW_BATTERY['BAT1'].capacity + "%"}
+             :css "@use 'colors'; .battery {color: colors.$base${EWW_BATTERY['BAT1'].status == 'Charging' ? '0a' : EWW_BATTERY['BAT1'].capacity < 20 ? '08' : '0b'};}"
+             :text {EWW_BATTERY['BAT1'].status == 'Charging' ? '' : EWW_BATTERY['BAT1'].capacity < 90 ? EWW_BATTERY['BAT1'].capacity < 75 ? EWW_BATTERY['BAT1'].capacity < 50 ? EWW_BATTERY['BAT1'].capacity < 10 ? '' : '' : '' : '' : ''}))))
+
+(defvar show-battery false)
+
+(defwidget brightness []
+  (eventbox :onhover "${EWW_CMD} update show-brightness=true"
+            :onhoverlost "${EWW_CMD} update show-brightness=false"
+    (box :orientation "vertical"
+         :space-evenly "false"
+         :valign "end"
+      (revealer :transition "slideup"
+                :reveal show-brightness
+                :duration "500ms"
+        (scale :class "brightness-bar"
+               :value percent-brightness
+               :orientation "vertical"
+               :onchange `brightnessctl set {}%`
+               :flipped true
+               :max 101
+               :min 0))
+      (label :class "brightness"
+             :text ""))))
+
+(defvar show-brightness false)
+(defpoll percent-brightness :interval "2s"
+                            :initial "0"
+                            :run-while show-brightness
+  `brightnessctl | grep -o '[0-9].%' | sed -e 's/[^0-9]//g'`)
+
+(defwidget power []
+  (eventbox :onhover "${EWW_CMD} update show-power=true"	
+            :onhoverlost "${EWW_CMD} update show-power=false" 
+    (box :orientation "vertical"
+         :space-evenly "false"
+         :vexpand "false"
+         :valign "end"
+         :class "power"
+      (revealer :transition "slideup"				
+                :reveal show-power
+                :duration "550ms"
+        (box :orientation "v"
+             :space-evenly "true"
+             :spacing 6
+  	(button :class "button-reboot"
+                :tooltip "Reboot"
+                :onclick `reboot`
+          "")
+	(button :class "button-quit"
+		:tooltip "Logout"
+		:onclick `hyprctl dispatch exit`
+          "")
+	(button :class "button-lock"
+                :tooltip "Lock Screen"
+		:onclick `echo hello`
+          "")))
+      (button :class "button-off"
+              :tooltip "Shutdown"		 
+              :onclick `shutdown now`
+        ""))))
+(defvar show-power false)
+
