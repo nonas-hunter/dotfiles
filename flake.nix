@@ -4,12 +4,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixgl.url = "github:guibou/nixgl";
+    nix-colors.url = "github:misterio77/nix-colors";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = {nixpkgs, nixgl, home-manager, ...}@inputs:
+  outputs = {nixpkgs, nixgl, nix-colors, home-manager, ...}@inputs:
     let
       version = "23.11";
       username = "luke";
@@ -31,6 +32,7 @@
           home = "/home/${username}";
           dotfiles = "/home/${username}/dotfiles";
           version = version;
+          nix-colors = nix-colors;
         };
         modules = [ ./systems/linux/home.nix ];
       };
