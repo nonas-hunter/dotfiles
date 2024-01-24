@@ -1,5 +1,7 @@
 hyprland
+hyprpaper
 vim
+iwd
 pipewire
 pipewire-audio
 pipewire-alsa
@@ -7,6 +9,10 @@ pipewire-pulse
 pipewire-jack
 wireplumber
 alsa-utils
+alsa-firmware
+sof-firmware
+networkmanager
+notification-daemon
 bluez
 bluez-utils
 blueman
