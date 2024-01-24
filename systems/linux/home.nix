@@ -11,6 +11,9 @@ in
   imports = [
     ../shared.nix
     ./desktop.nix
+    ./theme.nix
+    ./eww.nix
+    specialArgs.nix-colors.homeManagerModules.default
   ];
 
   targets.genericLinux.enable = true;
