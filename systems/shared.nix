@@ -19,8 +19,9 @@ in
 
   home.packages = [
     pkgs.neovim
-    pkgs.git
   ];
 
+
+  programs.git.enable = true;
   programs.home-manager.enable = true;
 }
