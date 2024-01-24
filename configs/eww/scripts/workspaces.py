@@ -22,6 +22,9 @@ def process_workspaces(raw_input):
     icons = {
        ".*Firefox.*": "",
        ".*@.*:.*": "",
+       ".*Slack.*": "",
+       ".*Zoom.*": "",
+       ".*Spotify.*": "",
     }
     
     output = {}
