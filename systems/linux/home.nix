@@ -13,6 +13,7 @@ in
     ./desktop.nix
     ./theme.nix
     ./eww.nix
+    ./swaylock.nix
     specialArgs.nix-colors.homeManagerModules.default
   ];
 

@@ -149,13 +149,17 @@
                 :tooltip "Reboot"
                 :onclick `reboot`
           "")
-	(button :class "button-quit"
-		:tooltip "Logout"
-		:onclick `hyprctl dispatch exit`
+	(button :class "button-hibernate"
+		:tooltip "Hibernate"
+		:onclick `swaylock & systemctl hibernate`
           "")
+        (button :class "button-sleep"
+                :tooltip "Sleep"
+                :onclick `swaylock & systemctl suspend`
+          "")
 	(button :class "button-lock"
-                :tooltip "Lock Screen"
-		:onclick `echo hello`
+                :tooltip "Lock"
+		:onclick `swaylock`
           "")))
       (button :class "button-off"
               :tooltip "Shutdown"		 

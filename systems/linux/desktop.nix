@@ -15,7 +15,6 @@ in
 
   home.packages = [
     (helpers.nixGLMesaWrap pkgs.alacritty)
-    (helpers.nixGLMesaWrap pkgs.firefox)
     pkgs.wofi
     pkgs.pavucontrol
     pkgs.helvum

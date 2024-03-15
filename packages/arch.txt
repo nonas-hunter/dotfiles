@@ -1,5 +1,6 @@
 hyprland
 hyprpaper
+swaylock
 vim
 iwd
 pipewire
@@ -18,3 +19,7 @@ bluez-utils
 blueman
 openssh
 brightnessctl
+remmina
+freerdp
+firefox
+telegram-desktop
