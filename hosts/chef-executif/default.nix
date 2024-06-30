@@ -13,6 +13,7 @@ inputs.darwin.lib.darwinSystem {
   specialArgs = { };
   modules = [
     ../../modules/common
+    globals
     inputs.home-manager.darwinModules.home-manager
     {
       gui.enable = true;

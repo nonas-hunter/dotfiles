@@ -42,5 +42,9 @@
       darwinConfigurations = {
         chef-executif = import ./hosts/chef-executif { inherit inputs globals overlays; };
       };
+
+      homeConfigurations = {
+        chef-executif = darwinConfigurations.chef-executif.config.home-manager.users.${globals.user}.home;
+      };
     };
 }
