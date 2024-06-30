@@ -12,12 +12,13 @@ inputs.darwin.lib.darwinSystem {
   system = "aarch64-darwin";
   specialArgs = { };
   modules = [
+    ../../modules/common
     inputs.home-manager.darwinModules.home-manager
     {
       gui.enable = true;
       theme = {
         colors = (import ../../themes/everforest).darkHard;
-        dark = true;
+        darkMode = true;
       };
     }
     
