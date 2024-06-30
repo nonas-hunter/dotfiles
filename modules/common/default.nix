@@ -5,6 +5,10 @@
   ...
 }:
 {
+  imports = [
+    ./nixpkgs.nix
+  ];
+
   options = {
     gui = {
       enable = lib.mkEnableOption {
