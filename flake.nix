@@ -25,7 +25,6 @@
         rec {
           user = "luke";
           fullName = "Luke Nonas-Hunter";
-          gitName = fullName;
           dotfilesRepo = "https://github.com/nonas-hunter/dotfiles";
         };
 
