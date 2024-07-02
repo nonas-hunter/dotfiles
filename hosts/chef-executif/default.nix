@@ -22,6 +22,7 @@ inputs.darwin.lib.darwinSystem {
         colors = (import ../../themes/everforest).darkHard;
         darkMode = true;
       };
+      alacritty.enable = true;
     }
     
   ];

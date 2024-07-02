@@ -7,6 +7,7 @@
 {
   imports = [
     ./shell
+    ./applications
   ];
 
   options = {
