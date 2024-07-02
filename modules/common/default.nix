@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ./nixpkgs.nix
+    ./shell
   ];
 
   options = {
