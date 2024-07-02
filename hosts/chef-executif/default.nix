@@ -13,6 +13,7 @@ inputs.darwin.lib.darwinSystem {
   specialArgs = { };
   modules = [
     ../../modules/common
+    ../../modules/darwin
     globals
     inputs.home-manager.darwinModules.home-manager
     {
