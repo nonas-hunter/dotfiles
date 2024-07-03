@@ -20,6 +20,18 @@
       programs.alacritty = {
         enable = true;
         settings = {
+          window = {
+            dimensions = {
+              columns = 85;
+              lines = 30;
+            };
+            padding = {
+              x = 20;
+              y = 20;
+            };
+            opacity = 0.75;
+            blur = true;
+          };
           font = {
             size = 14.0;
           };
@@ -52,8 +64,8 @@
               cyan = config.theme.colors.base0F;
               white = config.theme.colors.base07;
             };
+            draw_bold_text_with_bright_colors = false;
           };
-          draw_bold_text_with_bright_colors = false;
         };
       };
     };

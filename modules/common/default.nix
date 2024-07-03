@@ -26,7 +26,7 @@
         if pkgs.stdenv.isDarwin then "/Users/${config.user}" else "/home/${config.user}"
       );
     };
-    dotfilesRepo = lib.mkOption {
+    dotfilesPath = lib.mkOption {
       type = lib.types.path;
       description = "Path of dotfiles repository.";
       default = config.homePath + "/Documents/dotfiles";
