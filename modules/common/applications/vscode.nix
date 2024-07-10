@@ -19,7 +19,7 @@
     home-manager.users.${config.user} = {
       programs.vscode = {
         enable = true;
-        enaleUpdateCheck = false;
+        enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
   
         extensions = (with pkgs.vscode-extensions; []);
