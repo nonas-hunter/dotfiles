@@ -45,7 +45,7 @@
 
       homeConfigurations = {
         chef-executif = darwinConfigurations.chef-executif.config.home-manager.users.${globals.user}.home;
-        analog = darwinConfiguration.analog.config.home-manager.users.${globals.user}.home;
+        analog = darwinConfigurations.analog.config.home-manager.users.${globals.user}.home;
       };
     };
 }

@@ -1,5 +1,5 @@
-# Chef Exécutif
-# Leader of the brigade
+# Analog
+# An old dog learning new tricks
 
 {
   inputs,
