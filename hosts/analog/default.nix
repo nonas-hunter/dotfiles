@@ -24,7 +24,7 @@ inputs.darwin.lib.darwinSystem {
     {
       gui.enable = true;
       theme = {
-        colors = (import ../../themes/everforest).darkHard;
+        colors = (import ../../themes/ayu).mirage;
         darkMode = true;
       };
       alacritty.enable = true;
