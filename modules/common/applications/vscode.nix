@@ -19,7 +19,7 @@
     home-manager.users.${config.user} = {
       programs.vscode = {
         enable = true;
-        enaleUpdateCheck = false
+        enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
   
         extensions = (with pkgs.vscode-extensions; []);
@@ -55,6 +55,6 @@
       };
     };
 
-    environment.systemPath = "/Applications/Visual Studio Code.app/Contents/Resources/app/bin";
+    environment.systemPath = [ "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ];
   };
 }
