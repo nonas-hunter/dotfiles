@@ -40,10 +40,12 @@
     rec {
       darwinConfigurations = {
         chef-executif = import ./hosts/chef-executif { inherit inputs globals overlays; };
+        analog = import ./hosts/analog { inherit inputs globals overlays; };
       };
 
       homeConfigurations = {
         chef-executif = darwinConfigurations.chef-executif.config.home-manager.users.${globals.user}.home;
+        analog = darwinConfiguration.analog.config.home-manager.users.${globals.user}.home;
       };
     };
 }
