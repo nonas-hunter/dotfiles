@@ -9,6 +9,7 @@
       whitelist = {
         prefix = [ config.dotfilesPath ];
       };
+      hide_env_diff = true;
     };
   };
 
@@ -19,3 +20,4 @@
   '';
 
 }
+

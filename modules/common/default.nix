@@ -31,6 +31,10 @@
       description = "Path of dotfiles repository.";
       default = config.homePath + "/Documents/dotfiles";
     };
+    dotfilesRepo = lib.mkOption {
+      type = lib.types.str;
+      description = "Link to dotfiles repository HTTPS URL.";
+    };
     gui = {
       enable = lib.mkEnableOption {
         description = "Enable graphics.";
