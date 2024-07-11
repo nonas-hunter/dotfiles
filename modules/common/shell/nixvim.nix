@@ -10,12 +10,14 @@
   };
 
   config = lib.mkIf (config.nixvim.enable) {
-    home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
-
     home-manager.users.${config.user} = {
-      modules = [ inputs.nixvim.homeManagerModules.nixvim ];
       programs.nixvim = {
         enable = true;
+        colorschemes.${config.theme.name}.enable = true;
+        colorschemes.${config.theme.name}.settings = {
+          transparent_background = 1;
+          background = "hard";
+        };
       };
     };
   };
