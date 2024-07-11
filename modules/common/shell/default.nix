@@ -4,5 +4,6 @@
     ./zsh
     ./nixpkgs.nix
     ./direnv.nix
+    ./nixvim.nix
   ];
 }

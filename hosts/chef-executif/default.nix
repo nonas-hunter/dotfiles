@@ -23,6 +23,7 @@ inputs.darwin.lib.darwinSystem {
         darkMode = true;
       };
       alacritty.enable = true;
+      nixvim.enable = true;
     }
     
   ];
