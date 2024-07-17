@@ -14,6 +14,7 @@ inputs.darwin.lib.darwinSystem {
   modules = [
     ../../modules/common
     ../../modules/darwin
+    ./modules
     (
       globals
       // rec {
