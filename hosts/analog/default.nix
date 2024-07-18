@@ -23,13 +23,15 @@ inputs.darwin.lib.darwinSystem {
     )
     inputs.home-manager.darwinModules.home-manager
     {
+      home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
       gui.enable = true;
       theme = {
-        colors = (import ../../themes/ayu).mirage;
-        darkMode = true;
+         colors = (import ../../themes/ayu).mirage;
+         config = (import ../../themes/ayu).config;
       };
       alacritty.enable = true;
       vscode.enable = false;
+      nixvim.enable = true;
     }
 
   ];

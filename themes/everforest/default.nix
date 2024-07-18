@@ -1,6 +1,4 @@
 {
-  name = "everforest";
-  author = "Sainnhe Park";
   darkHard = {
     base00 = "#2E383C"; # Black (Host)
     base01 = "#E67E80"; # Red (Syntax string)
@@ -24,5 +22,14 @@
     foreground = "#D3C6AA"; # Foreground (Text)
 
     cursor = "#D3C6AA"; # Cursor
+  };
+
+  config = {
+    name = "everforest";
+    author = "Sainhe Park";
+    nixvim_settings = {
+      background = "hard";
+      transparent_background = 1;
+    };
   };
 }

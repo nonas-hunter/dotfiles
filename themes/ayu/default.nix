@@ -1,6 +1,4 @@
 {
-  name = "ayu";
-  author = "dempfi";
   mirage = {
     base00 = "#1F2430"; # Black (Host)
     base01 = "#FF3333"; # Red (Syntax string)
@@ -24,5 +22,19 @@
     foreground = "#CBCCC6"; # Foreground (Text)
 
     cursor = "#FFCC66"; # Cursor
+  };
+
+  config = {
+    name = "ayu";
+    author = "dempfi";
+    nixvim_settings = {
+      mirage = true;
+      overrides = {
+        Comment.bg = "NONE";
+        Normal.bg = "NONE";
+        NonText.ctermbg = "NONE";
+        CursorLine.ctermbg = "NONE";
+      };
+    };
   };
 }

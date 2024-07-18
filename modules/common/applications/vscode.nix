@@ -16,6 +16,7 @@
   };
 
   config = lib.mkIf (config.gui.enable && config.vscode.enable) {
+    unfreePackages = [ "vscode" ];
     home-manager.users.${config.user} = {
       programs.vscode = {
         enable = true;

@@ -3,7 +3,7 @@
   lib,
   pkgs,
   ...
-}
+}:
 {
   imports = [
     ./zsh.nix

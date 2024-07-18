@@ -47,11 +47,16 @@
         description = "Base16 color scheme.";
         default = (import ../themes/everforest).darkHard;
       };
-      darkMode = lib.mkOption {
-        type = lib.types.bool;
-        description = "Enable dark mode.";
-        default = true;
+      config = lib.mkOption {
+        type = lib.types.attrs;
+	description = "Additional configuration information on color scheme.";
       };
+
+    };
+    unfreePackages = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      description = "List of unfree packages to allow.";
+      default = [ ];
     };
   };
 
