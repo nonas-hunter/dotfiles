@@ -14,7 +14,6 @@ inputs.darwin.lib.darwinSystem {
   modules = [
     ../../modules/common
     ../../modules/darwin
-    ./modules
     (
       globals
       // rec {
@@ -30,7 +29,7 @@ inputs.darwin.lib.darwinSystem {
          config = (import ../../themes/ayu).config;
       };
       alacritty.enable = true;
-      pyenv.enable = true;
+      homebrew.enable = true;
       vscode.enable = false;
       nixvim.enable = true;
     }
