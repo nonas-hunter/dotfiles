@@ -30,6 +30,7 @@ inputs.darwin.lib.darwinSystem {
       };
       alacritty.enable = true;
       homebrew.enable = true;
+      zsh.enable = true;
       vscode.enable = false;
       nixvim.enable = true;
     }
