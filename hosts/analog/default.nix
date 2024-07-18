@@ -30,6 +30,7 @@ inputs.darwin.lib.darwinSystem {
          config = (import ../../themes/ayu).config;
       };
       alacritty.enable = true;
+      pyenv.enable = true;
       vscode.enable = false;
       nixvim.enable = true;
     }
