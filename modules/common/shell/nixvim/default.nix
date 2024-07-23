@@ -80,6 +80,10 @@
             enable = true;
             signs = true;
           };
+
+          bufferline = {
+            enable = true;
+          };
         };
       };
     };
