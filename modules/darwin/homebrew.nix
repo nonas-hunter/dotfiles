@@ -43,13 +43,12 @@
       };
     };
 
-    home-manager.users.${config.user}.home.sessionPath = [ "/opt/homebrew/bin/" ];
-
     home-manager.users.${config.user} = lib.mkIf (config.zsh.enable){
+      home.sessionPath = [ "/opt/homebrew/bin/" ];
       programs.zsh = {
         profileExtra = ''
           export PYENV_ROOT="$HOME/.pyenv"
-          [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+          command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
           eval "($pyenv init -)"
         '';
         initExtra = ''
