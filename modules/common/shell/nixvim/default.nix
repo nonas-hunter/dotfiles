@@ -42,6 +42,8 @@
           splitright = true;
           scrolloff = 10;
           hlsearch = true;
+          cursorline = true;
+
 
           swapfile = false;
           fileencoding = "utf-8";
