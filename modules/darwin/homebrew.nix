@@ -48,8 +48,8 @@
       programs.zsh = {
         profileExtra = ''
           export PYENV_ROOT="$HOME/.pyenv"
-          command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-          eval "($pyenv init -)"
+          [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+          eval "$(pyenv init -)"
         '';
         initExtra = ''
           export PYENV_ROOT="$HOME/.pyenv"
