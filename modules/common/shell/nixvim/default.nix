@@ -11,6 +11,7 @@
 
   imports = [
     ./lsp.nix
+    ./nvim-cmp.nix
   ];
 
   config = lib.mkIf (config.nixvim.enable) {

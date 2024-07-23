@@ -5,7 +5,7 @@
       programs.nixvim = {
         
         plugins.cmp-nvim-lsp = {
-          enable = true
+          enable = true;
         };
 
         plugins.fidget = {
