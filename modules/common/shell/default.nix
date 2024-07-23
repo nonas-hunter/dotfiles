@@ -5,6 +5,7 @@
     ./nixpkgs.nix
     ./direnv.nix
     ./nixvim
+    ./tmux.nix
     ./git.nix
   ];
 }
