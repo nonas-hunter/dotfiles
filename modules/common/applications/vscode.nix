@@ -23,11 +23,15 @@
         enableUpdateCheck = false;
         enableExtensionUpdateCheck = false;
   
-        extensions = (with pkgs.vscode-extensions; []);
+        extensions = (with pkgs.vscode-extensions; [
+          vscodevim.vim
+          ms-python.python
+          teabyii.ayu
+        ]);
   
         userSettings = {
           # General
-          "editor.fontSize" = 16;
+          "editor.fontSize" = 14;
           "editor.fontFamily" = "'Jetbrains Mono', 'monospace', monospace";
           "terminal.integrated.fontSize" = 14;
           "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'monospace', monospace";
@@ -47,8 +51,8 @@
           "git-graph.repository.commits.showSignatureStatus" = true;
           # Styling
           "window.autoDetectColorScheme" = true;
-          "workbench.preferredDarkColorTheme" = "Default Dark Modern";
-          "workbench.preferredLightColorTheme" = "Default Light Modern";
+          "workbench.preferredDarkColorTheme" = "Ayu Mirage";
+          "workbench.preferredLightColorTheme" = "Ayu Light";
           "workbench.iconTheme" = "material-icon-theme";
           "material-icon-theme.activeIconPack" = "none";
           "material-icon-theme.folders.theme" = "classic";
@@ -56,6 +60,5 @@
       };
     };
 
-    environment.systemPath = [ "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin" ];
   };
 }
