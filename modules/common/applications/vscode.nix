@@ -56,6 +56,6 @@
       };
     };
 
-    environment.systemPath = [ "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ];
+    environment.systemPath = [ "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin" ];
   };
 }

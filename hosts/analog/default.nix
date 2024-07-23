@@ -18,6 +18,8 @@ inputs.darwin.lib.darwinSystem {
       globals
       // rec {
         user = "luke.nonas-hunter";
+        gitEmail = "luke.nonas-hunter@analog.com";
+        gitName = "Luke Nonas-Hunter";
       }
     )
     inputs.home-manager.darwinModules.home-manager
@@ -31,7 +33,7 @@ inputs.darwin.lib.darwinSystem {
       alacritty.enable = true;
       homebrew.enable = true;
       zsh.enable = true;
-      vscode.enable = false;
+      vscode.enable = true;
       nixvim.enable = true;
     }
 
