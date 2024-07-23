@@ -21,9 +21,10 @@
       programs.vscode = {
         enable = true;
         enableUpdateCheck = false;
-        enableExtensionUpdateCheck = false;
+        enableExtensionUpdateCheck = true;
+        mutableExtensionsDir = true;
   
-        extensions = (with pkgs.vscode-extensions; [
+        extensions = (with pkgs.vscode-marketplace; [
           vscodevim.vim
           ms-python.python
           teabyii.ayu

@@ -24,6 +24,7 @@ inputs.darwin.lib.darwinSystem {
     )
     inputs.home-manager.darwinModules.home-manager
     {
+      nixpkgs.overlays = [] ++ overlays;
       home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
       gui.enable = true;
       theme = {
