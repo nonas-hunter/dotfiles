@@ -14,15 +14,17 @@ inputs.darwin.lib.darwinSystem {
   modules = [
     ../../modules/common
     ../../modules/darwin
-    ./modules
     (
       globals
       // rec {
         user = "luke.nonas-hunter";
+        gitEmail = "luke.nonas-hunter@analog.com";
+        gitName = "Luke Nonas-Hunter";
       }
     )
     inputs.home-manager.darwinModules.home-manager
     {
+      nixpkgs.overlays = [] ++ overlays;
       home-manager.sharedModules = [ inputs.nixvim.homeManagerModules.nixvim ];
       gui.enable = true;
       theme = {
@@ -30,7 +32,9 @@ inputs.darwin.lib.darwinSystem {
          config = (import ../../themes/ayu).config;
       };
       alacritty.enable = true;
-      vscode.enable = false;
+      homebrew.enable = true;
+      zsh.enable = true;
+      vscode.enable = true;
       nixvim.enable = true;
     }
 

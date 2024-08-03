@@ -16,6 +16,11 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
+
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, ... }@inputs:
@@ -30,7 +35,9 @@
           dotfilesRepo = "https://github.com/nonas-hunter/dotfiles";
         };
 
-      overlays = [];
+      overlays = [
+        inputs.nix-vscode-extensions.overlays.default
+      ];
 
       supportedSystems = [
         "x86_64-linux"
