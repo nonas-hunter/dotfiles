@@ -33,6 +33,8 @@
           user = "luke";
           fullName = "Luke Nonas-Hunter";
           dotfilesRepo = "https://github.com/nonas-hunter/dotfiles";
+          gitEmail = "luke@nonas-hunter.com";
+          gitName = "Luke Nonas-Hunter";
         };
 
       overlays = [
