@@ -19,6 +19,7 @@
 
     homebrew = {
       brews = [
+        "pipx"
         "pyenv"
         "pyenv-virtualenv"
         "cmake"
@@ -30,7 +31,6 @@
         "libmagic"
         "wget"
         "openocd"
-        "minicom"
       ];
       onActivation = {
         autoUpdate = false; # Don't update during rebuild

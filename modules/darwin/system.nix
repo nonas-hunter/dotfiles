@@ -16,5 +16,10 @@
     };
 
     programs.zsh.enable = true;
+
+    environment.systemPath = [
+      "/Users/${config.user}/.local/bin"
+    ];
   };
+
 }

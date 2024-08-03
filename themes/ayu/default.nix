@@ -34,7 +34,7 @@
         Normal.bg = "NONE";
         NonText.ctermbg = "NONE";
         CursorLine.ctermbg = "NONE";
-        CursorLineNR.bg = "NONE"; 
+        CursorLineNr.bg = "NONE"; 
         StatusLine.bg = "NONE";
         SignColumn.bg = "NONE";
       };

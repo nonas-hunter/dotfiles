@@ -36,6 +36,7 @@ inputs.darwin.lib.darwinSystem {
       zsh.enable = true;
       vscode.enable = true;
       nixvim.enable = true;
+      tmux.enable = true;
     }
 
   ];

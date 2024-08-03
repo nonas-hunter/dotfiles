@@ -17,6 +17,7 @@
         shell = "${pkgs.zsh}/bin/zsh";
         terminal = "screen-256color";
         historyLimit = 100000;
+        newSession = true;
       };
     };
   };
