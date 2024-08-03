@@ -21,9 +21,8 @@ inputs.darwin.lib.darwinSystem {
 
       gui.enable = true;
       theme = {
-        name = (import ../../themes/everforest).name;
+        config = (import ../../themes/everforest).config;
         colors = (import ../../themes/everforest).darkHard;
-        darkMode = true;
       };
       alacritty.enable = true;
       nixvim.enable = true;
