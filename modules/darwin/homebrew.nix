@@ -31,6 +31,10 @@
         "libmagic"
         "wget"
         "openocd"
+        "tree"
+      ];
+      casks = [
+        "docker"
       ];
       onActivation = {
         autoUpdate = false; # Don't update during rebuild
