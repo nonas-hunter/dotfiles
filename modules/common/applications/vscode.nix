@@ -28,6 +28,7 @@
           vscodevim.vim
           ms-python.python
           teabyii.ayu
+          pkief.material-icon-theme
         ]);
   
         userSettings = {
@@ -57,6 +58,8 @@
           "workbench.iconTheme" = "material-icon-theme";
           "material-icon-theme.activeIconPack" = "none";
           "material-icon-theme.folders.theme" = "classic";
+          # CMake
+          "cmake.showOptionsMovedNotification" = false;
         };
       };
     };
