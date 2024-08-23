@@ -34,3 +34,4 @@ darwin-rebuild switch --flake [INSERT PATH TO DOTFILES REPO]
   
 - Initial setup inspired by [rengare](https://github.com/rengare/dotfiles/tree/main)
 - Updated setup inspired by [nmasur](https://github.com/nmasur/dotfiles/tree/master)
+- Nixvim setup inspired by [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) and [JMartJonesy](https://github.com/JMartJonesy/kickstart.nixvim/tree/main)
