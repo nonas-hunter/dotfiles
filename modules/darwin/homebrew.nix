@@ -31,7 +31,7 @@
         "libmagic"
         "wget"
         "openocd"
-        "tree"
+        "uv"
       ];
       casks = [
         "docker"
