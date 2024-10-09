@@ -7,5 +7,6 @@
     ./nixvim
     ./tmux.nix
     ./git.nix
+    ./utilities.nix
   ];
 }

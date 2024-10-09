@@ -57,6 +57,11 @@
           autoindent = true;
         };
 
+        extraPackages = with pkgs; [
+          black
+          libclang
+        ];
+
         plugins = {
           telescope = {
             enable = true;
@@ -85,6 +90,19 @@
 
           bufferline = {
             enable = true;
+          };
+
+          conform-nvim = {
+            enable = true;
+            formattersByFt = {
+              python = [ "black" ];
+              c = [ "clang-format" ];
+              cpp = [ "clang-format" ];
+            };
+            formatOnSave = {
+              lspFallback = true;
+              timeoutMs = 5000;
+            };
           };
         };
       };
