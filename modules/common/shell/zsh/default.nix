@@ -19,6 +19,9 @@
       programs.zsh = {
         enable = true;
       };
+      programs.direnv = {
+        enableZshIntegration = true;
+      };
     };
   };
 }
