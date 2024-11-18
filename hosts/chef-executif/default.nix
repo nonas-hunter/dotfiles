@@ -26,6 +26,7 @@ inputs.darwin.lib.darwinSystem {
       };
       alacritty.enable = true;
       nixvim.enable = true;
+      zsh.enable = true;
     }
     
   ];
