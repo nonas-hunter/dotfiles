@@ -95,7 +95,7 @@
           conform-nvim = {
             enable = true;
             formattersByFt = {
-              python = [ "black" ];
+              python = [ "ruff_fix", "ruff_organize_imports" ];
               c = [ "clang-format" ];
               cpp = [ "clang-format" ];
             };
