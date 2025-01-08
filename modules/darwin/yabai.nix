@@ -1,5 +1,14 @@
 { config, pkgs, lib, ... }:
 {
+  options = {
+    yabai = {
+      enable = lib.mkEnableOption {
+        description = "Enable Yabai.";
+        default = false;
+      };
+    };
+  };
+
   config = lib.mkIf (pkgs.stdenv.isDarwin && config.yabai.enable) {
     services.yabai = {
       enable = true;
