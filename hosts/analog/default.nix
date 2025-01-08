@@ -37,6 +37,7 @@ inputs.darwin.lib.darwinSystem {
       vscode.enable = true;
       nixvim.enable = true;
       tmux.enable = true;
+      yabai.enable = true;
     }
 
   ];
