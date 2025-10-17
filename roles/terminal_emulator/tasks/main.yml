@@ -1,0 +1,23 @@
+---
+- name: Install alacritty (homebrew)
+  community.general.homebrew:
+    name: alacritty
+    state: latest
+  when: ansible_facts['distribution'] == "MacOSX"
+- name: Setup alacritty configuration (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Create alacritty config directory
+      ansible.builtin.file:
+        path: "{{ unix_config_home }}/alacritty"
+        state: directory
+      register: alacritty_config
+    - name: Clone themes repository
+      ansible.builtin.git:
+        repo: "https://github.com/alacritty/alacritty-theme.git"
+        dest: "{{ alacritty_config.path }}/alacritty-theme"
+    - name: Load dynamic config files from template
+      template:
+        src: alacritty.toml.j2
+        dest: "{{ alacritty_config.path }}/alacritty.toml"
+        mode: 0640
