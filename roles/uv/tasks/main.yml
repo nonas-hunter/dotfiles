@@ -1,0 +1,11 @@
+---
+- name: Install uv (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Install uv
+      ansible.builtin.shell: >
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+      args:
+        creates: "{{ ansible_env.HOME }}/.local/bin/uv"
+        chdir: "{{ ansible_env.HOME }}"
+
