@@ -1,0 +1,67 @@
+{% set neovim_theme_map = {
+  'nord': ['nord', '{ src = "https://github.com/shaunsingh/nord.nvim" }'],
+  'gruvbox_dark': ['gruvbox-dark', '{ src = "https://github.com/ellisonleao/gruvbox.nvim" }'],
+  'gruvbox_light': ['gruvbox-light', '{ src = "https://github.com/ellisonleao/gruvbox.nvim" }'],
+  'catppuccin_mocha': ['catppuccin-mocha', '{ src = "https://github.com/catppuccin/nvim" }'],
+  'catppuccin_latte': ['catppuccin-latte', '{ src = "https://github.com/catppuccin/nvim" }'],
+  'catppuccin_frappe': ['catppuccin-frappe', '{ src = "https://github.com/catppuccin/nvim" }'],
+  'catppuccin_macchiato': ['catppuccin-macchiato', '{ src = "https://github.com/catppuccin/nvim" }'],
+  'dracula_plus': ['dracula', '{ src = "https://github.com/Mofiqul/dracula.nvim" }'],
+  'tokyo_night': ['tokyonight-night', '{ src = "https://github.com/folke/tokyonight.nvim" }'],
+  'tokyo_night_day': ['tokyonight-day', '{ src = "https://github.com/folke/tokyonight.nvim" }'],
+  'tokyo_night_moon': ['tokyonight-moon', '{ src = "https://github.com/folke/tokyonight.nvim" }'],
+  'tokyo_night_storm': ['tokyonight-storm', '{ src = "https://github.com/folke/tokyonight.nvim" }'],
+  'one_dark': ['onedark', '{ src = "https://github.com/navarasu/onedark.nvim" }'],
+  'one_light': ['onelight', '{ src = "https://github.com/navarasu/onedark.nvim" }'],
+  'nightfox': ['nightfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'dayfox': ['dayfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'dawnfox': ['dawnfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'duskfox': ['duskfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'nordfox': ['nordfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'terafox': ['terafox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'carbonfox': ['carbonfox', '{ src = "https://github.com/EdenEast/nightfox.nvim" }'],
+  'rose_pine': ['rose-pine', '{ src = "https://github.com/rose-pine/neovim" }'],
+  'rose_pine_moon': ['rose-pine-moon', '{ src = "https://github.com/rose-pine/neovim" }'],
+  'rose_pine_dawn': ['rose-pine-dawn', '{ src = "https://github.com/rose-pine/neovim" }'],
+  'ayu_dark': ['ayu-dark', '{ src = "https://github.com/Shatur/neovim-ayu" }'],
+  'ayu_light': ['ayu-light', '{ src = "https://github.com/Shatur/neovim-ayu" }'],
+  'ayu_mirage': ['ayu-mirage', '{ src = "https://github.com/Shatur/neovim-ayu" }'],
+  'monokai_pro': ['monokai-pro', '{ src = "https://github.com/loctvl842/monokai-pro.nvim" }'],
+  'github_dark': ['github_dark', '{ src = "https://github.com/projekt0n/github-nvim-theme" }'],
+  'github_light': ['github_light', '{ src = "https://github.com/projekt0n/github-nvim-theme" }'],
+  'everforest_dark': ['everforest', '{ src = "https://github.com/neanias/everforest-nvim" }'],
+  'everforest_light': ['everforest', '{ src = "https://github.com/neanias/everforest-nvim" }'],
+  'kanagawa': ['kanagawa', '{ src = "https://github.com/rebelot/kanagawa.nvim" }'],
+  'material_darker': ['material-darker', '{ src = "https://github.com/marko-cerovac/material.nvim" }'],
+  'material_lighter': ['material-lighter', '{ src = "https://github.com/marko-cerovac/material.nvim" }'],
+  'material_oceanic': ['material-oceanic', '{ src = "https://github.com/marko-cerovac/material.nvim" }']
+}
+%}
+vim.o.winborder = "rounded"
+vim.o.number = true
+vim.o.relativenumber = true
+vim.o.signcolumn = "yes"
+vim.o.wrap = false
+vim.o.tabstop = 4
+vim.o.expandtab = true
+vim.o.swapfile = false
+
+vim.g.mapleader = "\\"
+
+vim.keymap.set('n', '<leader>w', ':write<CR>')
+vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+
+vim.pack.add({
+        { src = "https://github.com/neovim/nvim-lspconfig" },
+        { src = "https://github.com/mason-org/mason.nvim" },
+        {{ neovim_theme_map[color_scheme][1] | default('') }}
+})
+
+require "mason".setup()
+
+vim.lsp.enable({ "pyrefly", "ruff", "ty" })
+vim.lsp.enable({ "lua_ls" })
+vim.lsp.enable({ "clangd" })
+
+vim.cmd("colorscheme {{ neovim_theme_map[color_scheme][0] | default('default') }}")
+

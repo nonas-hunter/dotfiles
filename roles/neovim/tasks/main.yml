@@ -1,0 +1,25 @@
+---
+- name: Install neovim (homebrew)
+  community.general.homebrew:
+    name: neovim
+    state: head
+  when: ansible_facts['distribution'] == "MacOSX"
+- name: Recreate neovim config directory
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+  - name: Create neovim config directory
+    ansible.builtin.file:
+      path: "{{ unix_config_home }}/nvim"
+      state: directory
+    register: neovim_config
+- name: Load neovim config from template
+  ansible.builtin.template:
+    src: "init.lua.j2"
+    dest: "{{ neovim_config.path }}/init.lua"
+    mode: 0640
+- name: Install neovim nodejs package
+  community.general.npm:
+    name: neovim
+    global: true
+    executable: "{{ nodejs_binary_directory }}/npm"
+

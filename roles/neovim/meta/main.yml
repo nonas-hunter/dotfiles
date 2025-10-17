@@ -1,0 +1,5 @@
+---
+dependencies:
+  - role: uv
+  - role: package_manager
+  - role: nodejs
