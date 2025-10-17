@@ -1,0 +1,27 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Display inventory hostname
+      debug:
+        msg: "Inventory hostname: {{ inventory_hostname }}"
+    - name: Display system hostname
+      debug:
+        msg: "System hostname: {{ ansible_hostname }}"
+    - name: Print the FQDN
+      ansible.builtin.debug:
+        msg: "FQDN: {{ ansible_nodename }}"
+  roles:
+    - terminal_emulator
+
+- hosts: work
+  connection: local
+  tasks:
+    - name: Display inventory hostname
+      debug:
+        msg: "Inventory hostname: {{ inventory_hostname }}"
+    - name: Display system hostname
+      debug:
+        msg: "System hostname: {{ ansible_hostname }}"
+
+
