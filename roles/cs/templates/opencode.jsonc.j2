@@ -1,0 +1,28 @@
+{% set opencode_theme_map = {
+  'aura': 'aura',
+  'ayu_dark': 'ayu',
+  'catppuccin': 'catppuccin',
+  'Cobalt2': 'cobalt2',
+  'dracula': 'dracula',
+  'everforest_dark': 'everforest',
+  'github_dark': 'github',
+  'gruvbox_dark': 'gruvbox',
+  'kanagawa_wave': 'kanagawa',
+  'material_theme': 'material',
+  'monokai': 'monokai',
+  'nord': 'nord',
+  'one_dark': 'one-dark',
+  'palenight': 'palenight',
+  'rose_pine': 'rosepine',
+  'solarized_dark': 'solarized',
+  'synthwave_84': 'synthwave84',
+  'tokyo_night': 'tokyonight',
+  'vesper': 'vesper',
+  'zenburn': 'zenburn'
+} %}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "theme": "{{ opencode_theme_map[color_scheme] | default('system') }}",
+  "model": "github-copilot/claude-3-5-sonnet-20241022",
+  "autoupdate": true
+}

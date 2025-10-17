@@ -1,0 +1,17 @@
+---
+- name: Install terminal utilities (homebrew)
+  community.general.homebrew:
+    name:
+      - tree # Display dir content
+      - jq # JSON processor
+      - cmake # Cross-platform, open-source build system generator
+      - ninja # Small build system with a focus on speed
+      - gperf # Perfect hash function generator
+      - ccache # Compiler cache for fast recompilation of C/C++ code
+      - qemu # Generic and open source machine emulator and virtualizer
+      - dtc # Device Tree Compiler
+      - file # Program that shows the type of files
+      - wget # Tool for retrieving files using HTTP, HTTPS, and FTP
+      - openocd # Free and Open On-Chip Debugging, In-System Programming and Boundary-Scan Testing
+    state: present
+  when: ansible_facts['distribution'] == "MacOSX"

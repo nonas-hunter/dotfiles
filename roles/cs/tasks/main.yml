@@ -1,0 +1,5 @@
+---
+- name: Install commandline utilities
+  ansible.builtin.include_tasks: utilities.yml
+- name: Install ai tools
+  ansible.builtin.include_tasks: ai.yml

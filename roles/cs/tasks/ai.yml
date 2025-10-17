@@ -1,0 +1,20 @@
+---
+- name: Install AI coding assistant (homebrew)
+  community.general.homebrew:
+    name:
+      - opencode
+    state: present
+  when: ansible_facts['distribution'] == "MacOSX"
+- name: Setup opencode configuration (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Create opencode config directory
+      ansible.builtin.file:
+        path: "{{ unix_config_home }}/opencode"
+        state: directory
+      register: opencode_config
+    - name: Load config from template
+      ansible.builtin.template:
+        src: opencode.jsonc.j2
+        dest: "{{ opencode_config.path}}/opencode.jsonc"
+        mode: 0640
