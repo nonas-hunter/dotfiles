@@ -1,0 +1,4 @@
+---
+- name: Download homebrew
+  ansible.builtin.include_tasks: homebrew.yml
+  when: ansible_facts['distribution'] == "MacOSX"

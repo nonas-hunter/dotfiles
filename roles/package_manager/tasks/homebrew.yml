@@ -1,0 +1,48 @@
+---
+- name: Setup homebrew
+  block:
+    - name: Attempt to get Homebrew version
+      command: brew --version
+      register: brew_check
+      failed_when: brew_check.rc != 0
+  rescue:
+    - name: Pause to get sudo password
+      ansible.builtin.pause:
+        prompt: "Enter your sudo password"
+        echo: no
+      register: sudo_password
+      no_log: true
+
+    - name: Download Homebrew installation script
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
+        dest: /tmp/install_homebrew.sh
+        mode: 0755
+
+    - name: Install Homebrew if not already installed
+      ansible.builtin.expect:
+        command: /bin/bash /tmp/install_homebrew.sh
+        responses:
+          "Password": "{{ sudo_password.user_input }}"
+          "RETURN": ""
+        echo: false
+      no_log: true
+
+    - name: Configure Homebrew shell environment (zsh)
+      when: ansible_facts['user_shell'] is search("zsh")
+      block:
+        - name: Get Homebrew shell environment configuration
+          ansible.builtin.command: brew shellenv
+          register: brew_shellenv
+
+        - name: Ensure Homebrew is in the PATH for the current session
+          ansible.builtin.blockinfile:
+            marker: "# {mark} ANSIBLE MANAGED BLOCK - Homebrew shellenv"
+            path: ~/.zprofile
+            block: |
+              {{ brew_shellenv.stdout }}
+            prepend_newline: true
+  always:
+    - name: Update homebrew
+      community.general.homebrew:
+        update_homebrew: true
