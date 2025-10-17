@@ -1,0 +1,41 @@
+---
+- name: Setup nvm and install nodejs (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Install nvm
+      ansible.builtin.shell: >
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+      args:
+        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
+        chdir: "{{ ansible_env.HOME }}"
+      environment:
+        PROFILE: "/dev/null"
+    - name: Add nvm startup to zshenv
+      ansible.builtin.blockinfile:
+        path: "{{ ansible_env.HOME }}/.zshenv"
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - nvm"
+        prepend_newline: true
+        block: |
+          export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+      when: ansible_facts['user_shell'] is search("zsh")
+    - name: Install lts nodejs version and set it as default
+      ansible.builtin.shell: |
+        NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+        . "$NVM_DIR/nvm.sh"
+        nvm install lts/*
+        nvm alias default lts/*
+    - name: Get default nodejs binary directory location
+      ansible.builtin.shell: |
+        NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+        echo "${NVM_DIR}/versions/node/$(. "${NVM_DIR}/nvm.sh" && nvm current)/bin"
+      register: nodejs_bin_dir
+    - name: Save nodejs version as an ansible fact
+      ansible.builtin.set_fact:
+        nodejs_binary_directory: "{{ nodejs_bin_dir.stdout }}"
+    - name: Debug the nodejs version
+      ansible.builtin.debug:
+        var: nodejs_binary_directory
+
+
+
