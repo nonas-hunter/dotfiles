@@ -1,0 +1,27 @@
+---
+- name: Install zellij (homebrew)
+  community.general.homebrew:
+    name: zellij
+    state: latest
+  when: ansible_facts['distribution'] == "MacOSX"
+  register: zellij_install
+- name: Add zellij startup to zshrc
+  ansible.builtin.lineinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    line: |
+      eval "$(zellij setup --generate-auto-start zsh)"
+    regexp: '^eval "\$\(zellij setup --generate-auto-start zsh\)"$'
+  when: ansible_facts['user_shell'] is search("zsh") and not zellij_install.failed
+- name: Setup zellij configuration (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Create zellij config directory
+      ansible.builtin.file:
+        path: "{{ unix_config_home }}/zellij"
+        state: directory
+      register: zellij_config
+    - name: Load zellij config from template
+      template:
+        src: config.kdl.j2
+        dest: "{{ zellij_config.path }}/config.kdl"
+        mode: 0640
