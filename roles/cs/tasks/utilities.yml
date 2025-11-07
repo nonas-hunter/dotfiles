@@ -13,5 +13,6 @@
       - file # Program that shows the type of files
       - wget # Tool for retrieving files using HTTP, HTTPS, and FTP
       - openocd # Free and Open On-Chip Debugging, In-System Programming and Boundary-Scan Testing
+      - clang-format # Clang formatting tool
     state: present
   when: ansible_facts['distribution'] == "MacOSX"
