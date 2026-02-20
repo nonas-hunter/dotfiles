@@ -14,5 +14,6 @@
       - wget # Tool for retrieving files using HTTP, HTTPS, and FTP
       - openocd # Free and Open On-Chip Debugging, In-System Programming and Boundary-Scan Testing
       - clang-format # Clang formatting tool
+      - tree-sitter # Incremental parsing system for programming tools
     state: present
   when: ansible_facts['distribution'] == "MacOSX"

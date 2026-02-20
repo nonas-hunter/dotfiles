@@ -20,6 +20,7 @@
     - nodejs
     - uv
     - neovim
+    - direnv
 
 - hosts: work
   connection: local

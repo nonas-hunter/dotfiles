@@ -1,0 +1,17 @@
+---
+- name: Install direnv
+  community.general.homebrew:
+    name: direnv
+    state: head
+  when: ansible_facts['distribution'] == "MacOSX"
+- name: Hook direnv to zsh shell
+  ansible.builtin.blockinfile:
+    path: "{{ ansible_env.HOME }}/.zshrc"
+    marker: "# {mark} ANSIBLE MANAGED BLOCK - direnv"
+    prepend_newline: true
+    block: |
+      eval "$(direnv hook zsh)"
+
+
+
+
