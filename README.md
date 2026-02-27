@@ -11,10 +11,25 @@ Go to the [installation page on the `uv` website](https://docs.astral.sh/uv/gett
 Once `uv` is installed, we'll use `uv tool` to install ansible using the following command.
 
 ```bash
-uv tool install --with pexpect --with passlib --with argcomplete ansible-core
+uv tool install --python 3.12 --with pexpect --with passlib --with argcomplete ansible-core
 ```
 
-### 3. Celebrate
+### 3. Install ansible community packages
+The roles in this repository rely on modules created by the community. Install them with the following command.
+
+```bash
+ansible-galaxy collection install community.general
+```
+
+### 4. (Optional) Update ansible
+These roles require `ansible-core>=v2.16`. Check your ansible version and optionally update it with the following command.
+
+```bash
+ansible --version
+uv tool upgrade ansible-core
+```
+
+### 5. Celebrate
 And that's it! You're now ready to use ansible!
 
 ## Running the playbook
