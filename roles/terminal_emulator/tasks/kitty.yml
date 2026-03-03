@@ -1,0 +1,24 @@
+---
+- name: Install kitty (homebrew)
+  community.general.homebrew:
+    name: kitty
+    state: latest
+  when: ansible_facts['distribution'] == "MacOSX"
+
+- name: Setup kitty configuration (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Create kitty config directory
+      ansible.builtin.file:
+        path: "{{ unix_config_home }}/kitty"
+        state: directory
+      register: kitty_config
+    - name: Clone kitty themes repository
+      ansible.builtin.git:
+        repo: "https://github.com/dexpota/kitty-themes.git"
+        dest: "{{ kitty_config.path }}/kitty-themes"
+    - name: Load kitty config from template
+      ansible.builtin.template:
+        src: kitty.conf.j2
+        dest: "{{ kitty_config.path }}/kitty.conf"
+        mode: 0640

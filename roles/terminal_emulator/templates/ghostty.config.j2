@@ -1,0 +1,21 @@
+{% set ghostty_theme_map = {
+  'nord': 'Nord',
+  'gruvbox_dark': 'Gruvbox Dark',
+  'gruvbox_light': 'Gruvbox Light',
+  'catppuccin_mocha': 'Catppuccin Mocha',
+  'catppuccin_latte': 'Catppuccin Latte',
+  'catppuccin_frappe': 'Catppuccin Frappe',
+  'catppuccin_macchiato': 'Catppuccin Macchiato',
+  'tokyo_night': 'TokyoNight',
+  'tokyo_night_day': 'TokyoNight Day',
+  'tokyo_night_storm': 'TokyoNight Storm',
+  'tokyo_night_moon': 'TokyoNight Moon',
+  'one_dark': 'OneDark',
+  'one_light': 'One Light'
+} %}
+font-family = JetBrainsMono Nerd Font
+font-size = 14
+theme = "{{ ghostty_theme_map[color_scheme] | default(color_scheme) }}"
+window-padding-x = 20
+window-padding-y = 20
+window-inherit-working-directory = true

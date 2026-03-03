@@ -1,23 +1,14 @@
 ---
-- name: Install alacritty (homebrew)
-  community.general.homebrew:
-    name: alacritty
-    state: latest
-  when: ansible_facts['distribution'] == "MacOSX"
-- name: Setup alacritty configuration (unix-like)
-  when: ansible_facts['distribution'] == "MacOSX"
-  block:
-    - name: Create alacritty config directory
-      ansible.builtin.file:
-        path: "{{ unix_config_home }}/alacritty"
-        state: directory
-      register: alacritty_config
-    - name: Clone themes repository
-      ansible.builtin.git:
-        repo: "https://github.com/alacritty/alacritty-theme.git"
-        dest: "{{ alacritty_config.path }}/alacritty-theme"
-    - name: Load dynamic config files from template
-      template:
-        src: alacritty.toml.j2
-        dest: "{{ alacritty_config.path }}/alacritty.toml"
-        mode: 0640
+- name: Resolve terminal emulator for current platform
+  ansible.builtin.set_fact:
+    terminal_emulator: "{{ terminal_emulator | default(terminal_emulator_default_by_platform[ansible_facts['distribution']] | default('alacritty'), true) }}"
+
+- name: Validate selected terminal emulator
+  ansible.builtin.assert:
+    that:
+      - ansible_facts['distribution'] in terminal_emulator_supported_by_platform
+      - terminal_emulator in terminal_emulator_supported_by_platform.get(ansible_facts['distribution'], [])
+    fail_msg: "Unsupported terminal_emulator '{{ terminal_emulator }}' for platform '{{ ansible_facts['distribution'] }}'. Supported values: {{ terminal_emulator_supported_by_platform.get(ansible_facts['distribution'], []) }}"
+
+- name: Include selected terminal emulator tasks
+  ansible.builtin.include_tasks: "{{ terminal_emulator }}.yml"

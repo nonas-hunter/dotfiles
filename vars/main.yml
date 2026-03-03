@@ -4,3 +4,4 @@ windows_config_home: "{{ lookup('env', 'APPDATA') | default(lookup('env', 'USERP
 
 color_scheme: nord
 
+terminal_emulator: kitty

@@ -1,0 +1,20 @@
+---
+- name: Install ghostty (homebrew)
+  community.general.homebrew:
+    name: ghostty
+    state: latest
+  when: ansible_facts['distribution'] == "MacOSX"
+
+- name: Setup ghostty configuration (unix-like)
+  when: ansible_facts['distribution'] == "MacOSX"
+  block:
+    - name: Create ghostty config directory
+      ansible.builtin.file:
+        path: "{{ unix_config_home }}/ghostty"
+        state: directory
+      register: ghostty_config
+    - name: Load ghostty config from template
+      ansible.builtin.template:
+        src: ghostty.config.j2
+        dest: "{{ ghostty_config.path }}/config"
+        mode: 0640

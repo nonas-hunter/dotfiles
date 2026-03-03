@@ -1,0 +1,6 @@
+---
+- name: Install iTerm2 (homebrew cask)
+  community.general.homebrew_cask:
+    name: iterm2
+    state: latest
+  when: ansible_facts['distribution'] == "MacOSX"
