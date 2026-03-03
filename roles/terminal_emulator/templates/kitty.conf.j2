@@ -1,18 +1,4 @@
-{% set kitty_theme_map = {
-  'gruvbox_dark': 'gruvbox_dark',
-  'gruvbox_light': 'gruvbox_light',
-  'catppuccin_mocha': 'Catppuccin-Mocha',
-  'catppuccin_latte': 'Catppuccin-Latte',
-  'catppuccin_frappe': 'Catppuccin-Frappe',
-  'catppuccin_macchiato': 'Catppuccin-Macchiato',
-  'tokyo_night': 'Tokyo Night',
-  'tokyo_night_day': 'Tokyo Night Day',
-  'tokyo_night_storm': 'Tokyo Night Storm',
-  'tokyo_night_moon': 'Tokyo Night Moon',
-  'one_dark': 'One Dark',
-  'one_light': 'One Light'
-} %}
-include ./kitty-themes/themes/{{ kitty_theme_map[color_scheme] | default(color_scheme) }}.conf
+include ./kitty-themes/themes/{{ theme_map.kitty[color_scheme] }}.conf
 
 font_family JetBrainsMono Nerd Font
 font_size 14.0

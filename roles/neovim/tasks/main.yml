@@ -12,6 +12,13 @@
       path: "{{ unix_config_home }}/nvim"
       state: directory
     register: neovim_config
+- name: Validate neovim theme mapping and background
+  ansible.builtin.assert:
+    that:
+      - theme_map.neovim[color_scheme] is defined
+      - theme_background[color_scheme] is defined
+      - theme_background[color_scheme] in ['light', 'dark']
+    fail_msg: "No strict neovim theme/background mapping found for color_scheme='{{ color_scheme }}' in vars/themes.yml"
 - name: Load neovim config from template
   ansible.builtin.template:
     src: "init.lua.j2"
@@ -22,4 +29,3 @@
     name: neovim
     global: true
     executable: "{{ nodejs_binary_directory }}/npm"
-

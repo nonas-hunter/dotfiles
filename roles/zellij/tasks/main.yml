@@ -12,6 +12,11 @@
       eval "$(zellij setup --generate-auto-start zsh)"
     regexp: '^eval "\$\(zellij setup --generate-auto-start zsh\)"$'
   when: ansible_facts['user_shell'] is search("zsh") and not zellij_install.failed
+- name: Validate zellij theme mapping
+  ansible.builtin.assert:
+    that:
+      - theme_map.zellij[color_scheme] is defined
+    fail_msg: "No strict zellij theme mapping found for color_scheme='{{ color_scheme }}' in vars/themes.yml"
 - name: Setup zellij configuration (unix-like)
   when: ansible_facts['distribution'] == "MacOSX"
   block:
@@ -20,6 +25,16 @@
         path: "{{ unix_config_home }}/zellij"
         state: directory
       register: zellij_config
+    - name: Create zellij themes directory
+      ansible.builtin.file:
+        path: "{{ zellij_config.path }}/themes"
+        state: directory
+    - name: Download rose pine zellij theme file
+      ansible.builtin.get_url:
+        url: "https://raw.githubusercontent.com/rose-pine/zellij/refs/heads/main/dist/{{ theme_map.zellij[color_scheme] }}.kdl"
+        dest: "{{ zellij_config.path }}/themes/{{ theme_map.zellij[color_scheme] }}.kdl"
+        mode: "0644"
+      when: "'rose_pine' in color_scheme"
     - name: Load zellij config from template
       template:
         src: config.kdl.j2

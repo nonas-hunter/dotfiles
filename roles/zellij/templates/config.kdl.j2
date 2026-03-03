@@ -1,41 +1,3 @@
-{% set zellij_theme_map = {
-  'ayu_mirage': 'ayu_mirage',
-  'ayu_dark': 'ayu_dark',
-  'ayu_light': 'ayu_light',
-  'everforest_dark': 'everforest-dark',
-  'everforest_light': 'everforest-light',
-  'nord': 'nord',
-  'gruvbox_dark': 'gruvbox-dark',
-  'gruvbox_light': 'gruvbox-light',
-  'catppuccin_frappe': 'catppuccin-frappe',
-  'catppuccin_macchiato': 'catppuccin-macchiato',
-  'catppuccin_latte': 'catppuccin-latte',
-  'tokyo_night': 'tokyo-night',
-  'tokyo_night_dark': 'tokyo-night-dark',
-  'tokyo_night_storm': 'tokyo-night-storm',
-  'tokyo_night_light': 'tokyo-night-light',
-  'dracula': 'dracula',
-  'solarized_dark': 'solarized-dark',
-  'solarized_light': 'solarized-light',
-  'one_dark': 'onedark',
-  'one_half_dark': 'one-half-dark',
-  'monokai_dark': 'molokai-dark',
-  'nightfox': 'nightfox',
-  'dayfox': 'dayfox',
-  'kanagawa': 'kanagawa',
-  'iceberg_dark': 'iceberg-dark',
-  'iceberg_light': 'iceberg-light',
-  'pencil_light': 'pencil-light',
-  'retro_wave': 'retro-wave',
-  'blade_runner': 'blade-runner',
-  'cyber_noir': 'cyber-noir',
-  'night_owl': 'night-owl',
-  'lucario': 'lucario',
-  'menace': 'menace',
-  'vesper': 'vesper',
-  'ao': 'ao',
-  'atelier_sulphurpool': 'atelier-sulphurpool'
-} %}
 {% macro hex_to_rgb(hex_color) %}
 {%- if hex_color.startswith("#") -%}
     {%- set hex_value = hex_color[1:] -%}
@@ -332,7 +294,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 
-theme "{{ zellij_theme_map[color_scheme] | default('ansi') }}"
+theme "{{ theme_map.zellij[color_scheme] }}"
  
 // Choose the base input mode of zellij.
 // Default: normal

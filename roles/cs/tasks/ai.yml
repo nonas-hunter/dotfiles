@@ -8,6 +8,11 @@
 - name: Setup opencode configuration (unix-like)
   when: ansible_facts['distribution'] == "MacOSX"
   block:
+    - name: Validate opencode theme mapping
+      ansible.builtin.assert:
+        that:
+          - theme_map.opencode[color_scheme] is defined
+        fail_msg: "No strict opencode theme mapping found for color_scheme='{{ color_scheme }}' in vars/themes.yml"
     - name: Create opencode config directory
       ansible.builtin.file:
         path: "{{ unix_config_home }}/opencode"

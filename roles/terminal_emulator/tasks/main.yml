@@ -10,5 +10,13 @@
       - terminal_emulator in terminal_emulator_supported_by_platform.get(ansible_facts['distribution'], [])
     fail_msg: "Unsupported terminal_emulator '{{ terminal_emulator }}' for platform '{{ ansible_facts['distribution'] }}'. Supported values: {{ terminal_emulator_supported_by_platform.get(ansible_facts['distribution'], []) }}"
 
+- name: Validate terminal theme mapping
+  ansible.builtin.assert:
+    that:
+      - theme_map[terminal_emulator] is defined
+      - theme_map[terminal_emulator][color_scheme] is defined
+    fail_msg: "No strict theme mapping found for terminal_emulator='{{ terminal_emulator }}' and color_scheme='{{ color_scheme }}' in vars/themes.yml"
+  when: terminal_emulator != 'iterm2'
+
 - name: Include selected terminal emulator tasks
   ansible.builtin.include_tasks: "{{ terminal_emulator }}.yml"

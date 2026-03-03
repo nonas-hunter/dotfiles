@@ -2,6 +2,6 @@
 unix_config_home: "{{ lookup('env', 'XDG_CONFIG_HOME') | default(lookup('env', 'HOME') ~ '/.config', true) }}"
 windows_config_home: "{{ lookup('env', 'APPDATA') | default(lookup('env', 'USERPROFILE') ~ '/AppData/Roaming', true) }}"
 
-color_scheme: nord
+color_scheme: rose_pine_dawn
 
 terminal_emulator: kitty

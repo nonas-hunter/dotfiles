@@ -3,6 +3,7 @@
   connection: local
   vars_files:
     - vars/main.yml
+    - vars/themes.yml
   tasks:
     - name: Display inventory hostname
       debug:
@@ -26,6 +27,7 @@
   connection: local
   vars_files:
     - vars/main.yml
+    - vars/themes.yml
   tasks:
     - name: Display inventory hostname
       debug:
@@ -35,4 +37,3 @@
         msg: "System hostname: {{ ansible_facts['hostname'] }}"
   roles:
     - cs
-

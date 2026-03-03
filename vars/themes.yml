@@ -1,0 +1,152 @@
+---
+theme_map:
+  alacritty:
+    nord: nord
+    gruvbox_dark: gruvbox_dark
+    gruvbox_light: gruvbox_light
+    catppuccin_mocha: catppuccin_mocha
+    catppuccin_latte: catppuccin_latte
+    catppuccin_frappe: catppuccin_frappe
+    catppuccin_macchiato: catppuccin_macchiato
+    dracula_plus: dracula_plus
+    tokyo_night: tokyo_night
+    tokyo_night_day: tokyo_night_day
+    tokyo_night_moon: tokyo_night_moon
+    tokyo_night_storm: tokyo_night_storm
+    one_dark: one_dark
+    one_light: one_light
+    nightfox: nightfox
+    dayfox: dayfox
+    dawnfox: dawnfox
+    duskfox: duskfox
+    nordfox: nordfox
+    terafox: terafox
+    carbonfox: carbonfox
+    rose_pine: rose_pine
+    rose_pine_moon: rose_pine_moon
+    rose_pine_dawn: rose_pine_dawn
+    ayu_dark: ayu_dark
+    ayu_light: ayu_light
+    ayu_mirage: ayu_mirage
+    monokai_pro: monokai_pro
+    github_dark: github_dark
+    github_light: github_light
+    everforest_dark: everforest_dark
+    everforest_light: everforest_light
+    kanagawa: kanagawa
+    material_darker: material_darker
+    material_lighter: material_lighter
+    material_oceanic: material_oceanic
+  kitty:
+    gruvbox_dark: gruvbox_dark
+    gruvbox_light: gruvbox_light
+    rose_pine: rose-pine
+    rose_pine_dawn: rose-pine-dawn
+    rose_pine_moon: rose-pine-moon
+  ghostty:
+    nord: Nord
+    gruvbox_dark: Gruvbox Dark
+    gruvbox_light: Gruvbox Light
+    catppuccin_mocha: Catppuccin Mocha
+    catppuccin_latte: Catppuccin Latte
+    catppuccin_frappe: Catppuccin Frappe
+    catppuccin_macchiato: Catppuccin Macchiato
+    tokyo_night: TokyoNight
+    tokyo_night_day: TokyoNight Day
+    tokyo_night_storm: TokyoNight Storm
+    tokyo_night_moon: TokyoNight Moon
+    one_dark: OneDark
+    one_light: One Light
+    rose_pine_dawn: Rose Pine Dawn
+  zellij:
+    ayu_mirage: ayu_mirage
+    ayu_dark: ayu_dark
+    ayu_light: ayu_light
+    everforest_dark: everforest-dark
+    everforest_light: everforest-light
+    nord: nord
+    gruvbox_dark: gruvbox-dark
+    gruvbox_light: gruvbox-light
+    catppuccin_frappe: catppuccin-frappe
+    catppuccin_macchiato: catppuccin-macchiato
+    catppuccin_latte: catppuccin-latte
+    tokyo_night: tokyo-night
+    tokyo_night_dark: tokyo-night-dark
+    tokyo_night_storm: tokyo-night-storm
+    tokyo_night_light: tokyo-night-light
+    dracula: dracula
+    solarized_dark: solarized-dark
+    solarized_light: solarized-light
+    one_dark: onedark
+    one_half_dark: one-half-dark
+    monokai_dark: molokai-dark
+    nightfox: nightfox
+    dayfox: dayfox
+    kanagawa: kanagawa
+    iceberg_dark: iceberg-dark
+    iceberg_light: iceberg-light
+    pencil_light: pencil-light
+    retro_wave: retro-wave
+    blade_runner: blade-runner
+    cyber_noir: cyber-noir
+    night_owl: night-owl
+    lucario: lucario
+    menace: menace
+    vesper: vesper
+    ao: ao
+    atelier_sulphurpool: atelier-sulphurpool
+    rose_pine_dawn: rose-pine-dawn
+  opencode:
+    aura: aura
+    ayu_dark: ayu
+    catppuccin: catppuccin
+    catppuccin_frappe: catppuccin-frappe
+    catppuccin_macchiato: catppuccin-macchiato
+    cobalt2: cobalt2
+    cursor: cursor
+    dracula: dracula
+    everforest_dark: everforest
+    github_dark: github
+    gruvbox_dark: gruvbox
+    gruvbox_light: gruvbox
+    kanagawa_wave: kanagawa
+    material_theme: material
+    monokai: monokai
+    nord: nord
+    one_dark: one-dark
+    palenight: palenight
+    rose_pine: rosepine
+    rose_pine_dawn: rosepine
+    rose_pine_moon: rosepine
+    solarized_dark: solarized
+    synthwave_84: synthwave84
+    tokyo_night: tokyonight
+    zenburn: zenburn
+  neovim:
+    nord:
+      colorscheme: nord
+      plugin: '{ src = "https://github.com/shaunsingh/nord.nvim" }'
+    gruvbox_dark:
+      colorscheme: gruvbox
+      plugin: '{ src = "https://github.com/ellisonleao/gruvbox.nvim" }'
+    gruvbox_light:
+      colorscheme: gruvbox
+      plugin: '{ src = "https://github.com/ellisonleao/gruvbox.nvim" }'
+    rose_pine:
+      colorscheme: rose-pine
+      plugin: '{ src = "https://github.com/rose-pine/neovim" }'
+    rose_pine_moon:
+      colorscheme: rose-pine-moon
+      plugin: '{ src = "https://github.com/rose-pine/neovim" }'
+    rose_pine_dawn:
+      colorscheme: rose-pine-dawn
+      plugin: '{ src = "https://github.com/rose-pine/neovim" }'
+    
+
+theme_background:
+  nord: dark
+  rose_pine: dark
+  rose_pine_dawn: light
+  rose_pine_moon: dark
+  gruvbox_light: light
+  gruvbox_dark: dark

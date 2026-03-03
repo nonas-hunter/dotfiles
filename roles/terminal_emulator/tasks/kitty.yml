@@ -15,7 +15,7 @@
       register: kitty_config
     - name: Clone kitty themes repository
       ansible.builtin.git:
-        repo: "https://github.com/dexpota/kitty-themes.git"
+        repo: "https://github.com/kovidgoyal/kitty-themes.git"
         dest: "{{ kitty_config.path }}/kitty-themes"
     - name: Load kitty config from template
       ansible.builtin.template:
