@@ -9,10 +9,10 @@
         msg: "Inventory hostname: {{ inventory_hostname }}"
     - name: Display system hostname
       debug:
-        msg: "System hostname: {{ ansible_hostname }}"
+        msg: "System hostname: {{ ansible_facts['hostname'] }}"
     - name: Print the FQDN
       ansible.builtin.debug:
-        msg: "FQDN: {{ ansible_nodename }}"
+        msg: "FQDN: {{ ansible_facts['nodename'] }}"
   roles:
     - package_manager
     - terminal_emulator
@@ -32,8 +32,7 @@
         msg: "Inventory hostname: {{ inventory_hostname }}"
     - name: Display system hostname
       debug:
-        msg: "System hostname: {{ ansible_hostname }}"
+        msg: "System hostname: {{ ansible_facts['hostname'] }}"
   roles:
     - cs
-
 

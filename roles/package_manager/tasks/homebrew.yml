@@ -39,6 +39,7 @@
           ansible.builtin.blockinfile:
             marker: "# {mark} ANSIBLE MANAGED BLOCK - Homebrew shellenv"
             path: ~/.zprofile
+            create: true
             block: |
               {{ brew_shellenv.stdout }}
             prepend_newline: true

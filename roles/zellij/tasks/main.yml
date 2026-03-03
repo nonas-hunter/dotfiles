@@ -7,7 +7,7 @@
   register: zellij_install
 - name: Add zellij startup to zshrc
   ansible.builtin.lineinfile:
-    path: "{{ ansible_env.HOME }}/.zshrc"
+    path: "{{ ansible_facts['env']['HOME'] }}/.zshrc"
     line: |
       eval "$(zellij setup --generate-auto-start zsh)"
     regexp: '^eval "\$\(zellij setup --generate-auto-start zsh\)"$'

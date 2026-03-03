@@ -6,13 +6,13 @@
       ansible.builtin.shell: >
         curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
       args:
-        creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
-        chdir: "{{ ansible_env.HOME }}"
+        creates: "{{ ansible_facts['env']['HOME'] }}/.nvm/nvm.sh"
+        chdir: "{{ ansible_facts['env']['HOME'] }}"
       environment:
         PROFILE: "/dev/null"
     - name: Add nvm startup to zshenv
       ansible.builtin.blockinfile:
-        path: "{{ ansible_env.HOME }}/.zshenv"
+        path: "{{ ansible_facts['env']['HOME'] }}/.zshenv"
         marker: "# {mark} ANSIBLE MANAGED BLOCK - nvm"
         prepend_newline: true
         create: true
@@ -37,6 +37,5 @@
     - name: Debug the nodejs version
       ansible.builtin.debug:
         var: nodejs_binary_directory
-
 
 
